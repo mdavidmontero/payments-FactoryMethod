@@ -1,7 +1,7 @@
 import { Response, Request } from "express";
 import { PaymentRepository } from "../../domain/repositories/payment.repository";
 import { CreatePaymentDto } from "../../domain/dtos/payments/create-payment.dto";
-import { CreatePayment } from "../../domain/use-cases/create-payment";
+import { CreatePayment } from "../../domain/use-cases/use-case-factory";
 
 export class PaymentsController {
   constructor(private readonly paymentRepository: PaymentRepository) {}
@@ -14,7 +14,7 @@ export class PaymentsController {
 
     new CreatePayment(this.paymentRepository)
       .execute(createPaymentDto)
-      .then((payment) => res.json(payment))
-      .catch((error) => res.status(400).json({ error }));
+      .then((payment) => res.json({ message: "Pago exitoso", payment }))
+      .catch((error) => res.status(400).json({ error: error.message }));
   };
 }
