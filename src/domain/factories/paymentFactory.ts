@@ -4,8 +4,6 @@ import { DebitCardPayment } from "../entities/payment-methods/debitcard-payment"
 import { PayPalPayment } from "../entities/payment-methods/paypal-payment";
 
 export abstract class PaymentFactory {
-  abstract paymentPay(paymentType: string): IPaymentMethod;
-
   static generatePayment(paymentType: string): IPaymentMethod {
     switch (paymentType) {
       case "credit":
