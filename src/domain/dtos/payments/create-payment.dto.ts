@@ -4,7 +4,9 @@ export class CreatePaymentDto {
   static create(props: { [key: string]: any }): [string?, CreatePaymentDto?] {
     const { paymentType, amount } = props;
     if (!paymentType || paymentType.length === 0)
-      return ["paymentType is required", undefined];
+      return ["el tipo de pago es requerido", undefined];
+    if (!amount) return ["el monto es requerido", undefined];
+    if (amount < 0) return ["el monto no puede ser negativo", undefined];
 
     return [undefined, new CreatePaymentDto(paymentType, amount)];
   }

@@ -2,6 +2,7 @@ import { IPaymentMethod } from "../entities/IPaymentMethod";
 import { CreditCardPayment } from "../entities/payment-methods/credicarPayment";
 import { DebitCardPayment } from "../entities/payment-methods/debitcard-payment";
 import { PayPalPayment } from "../entities/payment-methods/paypal-payment";
+import { CustomError } from "../errors/custom.error";
 
 export abstract class PaymentFactory {
   static generatePayment(paymentType: string): IPaymentMethod {
@@ -13,7 +14,7 @@ export abstract class PaymentFactory {
       case "paypal":
         return new PayPalPayment();
       default:
-        throw new Error("Método de pago no soportado");
+        throw CustomError.badRequest("Método de pago no soportado");
     }
   }
 }
