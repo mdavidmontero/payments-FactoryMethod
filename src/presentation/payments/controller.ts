@@ -3,6 +3,7 @@ import { PaymentRepository } from "../../domain/repositories/payment.repository"
 import { CreatePaymentDto } from "../../domain/dtos/payments/create-payment.dto";
 import { CreatePayment } from "../../domain/use-cases/use-case-factory";
 import { CustomError } from "../../domain/errors/custom.error";
+import { request } from "http";
 
 export class PaymentsController {
   constructor(private readonly paymentRepository: PaymentRepository) {}
@@ -17,6 +18,7 @@ export class PaymentsController {
   };
 
   public createPayment = (req: Request, res: Response): any => {
+    console.log(req.body)
     const [error, createPaymentDto] = CreatePaymentDto.create(req.body);
     if (error) {
       return this.handleError(error, res.json({ error }));
@@ -26,5 +28,6 @@ export class PaymentsController {
       .execute(createPaymentDto)
       .then((payment) => res.json({ message: "Pago exitoso", payment }))
       .catch((error) => this.handleError(error, res));
+
   };
 }
