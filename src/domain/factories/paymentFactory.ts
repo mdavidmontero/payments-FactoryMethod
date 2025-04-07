@@ -7,36 +7,16 @@ import { PaymentFactory } from "../entities/PaymentFactory";
 import { CustomError } from "../errors/custom.error";
 
 export abstract class PaymentFactorys {
-
-  static generatePayment(paymentType: string) {
-    let payment:PaymentFactory
+  static generatePayment(paymentType: string): PaymentFactory {
     switch (paymentType) {
       case "credit":
-        payment = new CredicarPaymentFabric()
-        break;
-      case "debit":
-        return new DebitCardPayment();
-      case "paypal":
-        return new PayPalPayment();
+        return new CredicarPaymentFabric();
+      // case "debit":
+      //   return new DebitCardPayment();
+      // case "paypal":
+      //   return new PayPalPayment();
       default:
         throw CustomError.badRequest("Método de pago no soportado");
     }
   }
-
-
-  // const contPay = 
-
-  // switch (paymentType: string) {
-  //   case "credit":
-  //     return new CreditCardPayment();
-  //   case "debit":
-  //     return new DebitCardPayment();
-  //   case "paypal":
-  //     return new PayPalPayment();
-  //   default:
-  //     throw CustomError.badRequest("Método de pago no soportado");
-  // }
-
-
-
 }

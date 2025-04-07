@@ -8,7 +8,7 @@ export class CreatePayment {
 
   async execute(
     createPaymentDto: CreatePaymentDto
-  ): Promise<{ paymentEntity: PaymentEntity; confirmation: string }> {
+  ): Promise<{ paymentEntity: PaymentEntity; confirmation: void }> {
     const { paymentType, amount } = createPaymentDto;
     const confirmation = PaymentProcessor.processPayment(paymentType, amount);
     const paymentEntity = await this.paymentRepository.create(createPaymentDto);

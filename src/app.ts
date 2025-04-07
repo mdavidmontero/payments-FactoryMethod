@@ -6,7 +6,7 @@ import { Server } from "./presentation/server";
 
 function main() {
   const server = new Server({
-    port: 3001,
+    port: 3000,
     routes: AppRoutes.routes,
   });
 
