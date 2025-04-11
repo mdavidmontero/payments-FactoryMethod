@@ -3,19 +3,39 @@
 
 
 ## Herramientas
+### Backend
 - Node.js
 - Express.js
 - TypeScript
 
+### Frontend
+- React
+- Vite
+- TypeScript
+- Chakra UI
+
 ## Arquitectura Utilizada 
 - Clean Architecture
 - Domain Driven Design
-- Patrón Factory Method
+- Patrón Factory Method (Backend)  
+- Patrón Abstract Factory (Frontend) 
 
 ## Pasos para ejecutar el proyecto
 1. Clonar el repositorio
-2. Instalar dependencias con `npm install`
-3. Ejecutar el proyecto con `npm run dev`
+2. Ejecutar el backend
+   - cd payment-factory-method/backend
+   - npm install
+   - npm run dev
+
+   El backend expone dos endpoints principales:
+    /payments: para gestionar pagos (Factory Method)
+    /notifications: para enviar notificaciones (Factory Method)
+   
+4. Ejecutar el Frontend
+   - cd payment-factory-method/frontend-new
+   - npm install
+   - npm run dev
+
 
 ## Autores
 - Mateo Rodriguez
